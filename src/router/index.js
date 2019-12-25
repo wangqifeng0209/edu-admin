@@ -51,28 +51,118 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '首页', icon: 'dashboard' }
     }]
   },
-
   {
-    path: '/example',
+    path: '/teacher',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    redirect: '/teacher/table',
+    name: '讲师管理',
+    meta: { title: '讲师管理', icon: 'example' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: '/list',
+        name: '讲师列表',
+        component: () => import('@/views/teacher/list/index'),
+        meta: { title: '讲师列表', icon: 'table' }
       },
       {
-        path: 'tree',
+        path: '/save',
+        name: '添加讲师',
+        component: () => import('@/views/teacher/save/index'),
+        meta: { title: '添加讲师', icon: 'tree' }
+      },
+      {
+        path: '/update/:id',
+        name: '修改讲师',
+        component: () => import('@/views/teacher/save/index'),
+        meta: { title: '修改讲师', icon: 'tree' },
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/subject',
+    component: Layout,
+    redirect: '/subject/table',
+    name: '讲师管理',
+    meta: { title: '课程分类', icon: 'example' },
+    children: [
+      {
+        path: '/subject/list',
+        name: '课程列表',
+        component: () => import('@/views/subject/list/index'),
+        meta: { title: '课程列表', icon: 'table' }
+      },
+      {
+        path: '/upload',
+        name: '上传课程',
+        component: () => import('@/views/subject/upload/index'),
+        meta: { title: '上传课程', icon: 'tree' }
+      }
+    ]
+  },
+  {
+    path: '/course',
+    component: Layout,
+    redirect: '/course/index',
+    name: '讲师管理',
+    meta: { title: '课程管理', icon: 'example' },
+    children: [
+      {
+        path: '/course/list',
+        name: '课程列表',
+        component: () => import('@/views/course/list'),
+        meta: { title: '课程列表', icon: 'table' }
+      },
+      {
+        path: '/course/publish1',
+        name: '上传课程',
+        component: () => import('@/views/course/publish1'),
+        meta: { title: '发布课程', icon: 'tree' }
+      },
+      {
+        path: '/course/publish1/:id',
+        name: '上传课程',
+        component: () => import('@/views/course/publish1'),
+        meta: { title: '发布课程', icon: 'tree' },
+        hidden: true
+      },
+      {
+        path: '/course/publish2/:id',
+        name: '上传课程',
+        component: () => import('@/views/course/publish2'),
+        meta: { title: '发布课程', icon: 'tree' },
+        hidden: true
+      },
+      {
+        path: '/course/publish3/:id',
+        name: '上传课程',
+        component: () => import('@/views/course/publish3'),
+        meta: { title: '发布课程', icon: 'tree' },
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/statistics',
+    component: Layout,
+    redirect: '/statistics/table',
+    name: 'Example',
+    meta: { title: '统计分析', icon: 'example' },
+    children: [
+      {
+        path: '/statistics/createData',
+        name: 'Table',
+        component: () => import('@/views/statistics/createData'),
+        meta: { title: '生成数据', icon: 'table' }
+      },
+      {
+        path: '/statistics/showChart',
         name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        component: () => import('@/views/statistics/showChart'),
+        meta: { title: '图表显示', icon: 'tree' }
       }
     ]
   },
@@ -85,7 +175,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        meta: { title: '表单', icon: 'form' }
       }
     ]
   },
@@ -96,7 +186,7 @@ export const constantRoutes = [
     redirect: '/nested/menu1',
     name: 'Nested',
     meta: {
-      title: 'Nested',
+      title: '嵌套菜单',
       icon: 'nested'
     },
     children: [
@@ -104,31 +194,31 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: 'Menu1' },
+        meta: { title: '菜单1' },
         children: [
           {
             path: 'menu1-1',
             component: () => import('@/views/nested/menu1/menu1-1'),
             name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
+            meta: { title: '菜单1-1' }
           },
           {
             path: 'menu1-2',
             component: () => import('@/views/nested/menu1/menu1-2'),
             name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
+            meta: { title: '菜单1-2' },
             children: [
               {
                 path: 'menu1-2-1',
                 component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
                 name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
+                meta: { title: '菜单1-2-1' }
               },
               {
                 path: 'menu1-2-2',
                 component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
                 name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
+                meta: { title: '菜单1-2-2' }
               }
             ]
           },
@@ -136,14 +226,14 @@ export const constantRoutes = [
             path: 'menu1-3',
             component: () => import('@/views/nested/menu1/menu1-3'),
             name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
+            meta: { title: '菜单1-3' }
           }
         ]
       },
       {
         path: 'menu2',
         component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
+        meta: { title: '菜单2' }
       }
     ]
   },
@@ -154,7 +244,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        meta: { title: '外链', icon: 'link' }
       }
     ]
   },
